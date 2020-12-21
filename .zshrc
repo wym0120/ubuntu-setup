@@ -68,7 +68,7 @@ ZSH_THEME="cloud"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -125,3 +125,11 @@ antigen apply
 # Set any settings or overrides here
 # prompt belak
 bindkey -e
+
+# change python alias
+alias python=python3 
+
+# z
+. ~/z/z.sh
+# opam configuration
+test -r /home/minguw/.opam/opam-init/init.zsh && . /home/minguw/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

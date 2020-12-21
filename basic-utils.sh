@@ -17,9 +17,27 @@ sudo apt-get install ubuntu-make
 
 # install nodejs
 sudo snap install node --classic
-npm config set registry https://registry.npm.taobao.org
-# install tldr
-#npm install -g tldr
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#######################################
+#          coq environment
+#######################################
+# emacs
+sudo snap install emacs --classic
+cp init.el ~/.emacs.d/init.el
+# opam
+sudo add-apt-repository ppa:avsm/ppa
+sudo apt update
+sudo apt install opam
+opam init
+eval $(opam env)
+opam install opam-depext
+opam-depext coq
+opam pin add coq 8.12.2
+# general proof
+git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
+cd ~/.emacs.d/lisp/PG
+make
+# Finally, install general proof and company-coq in emacs
